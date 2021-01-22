@@ -6,6 +6,11 @@ from PIL import Image, ImageTk
 from threading import Thread
 from tesseract import ProcessImage
 
+
+def stop_():
+    camera.destroy()
+    cap.release()
+
 #display result
 def extractimg(img): 
     result = Toplevel(mainframe)
@@ -53,8 +58,10 @@ def opencam():
     camera.title("camera")
     camera.geometry('500x500')
     val = 1
-    snap = Button(camera,text='Snap',command = Thread(target=snap_,args=()).start,bg='red')
-    snap.place(relheight=0.1,relwidth=0.5,relx=0.4,rely=0.9)
+    snap = Button(camera,text='Snap',command = Thread(target=snap_,args=()).start,bg='#41abf2')
+    snap.place(relheight=0.1,relwidth=0.5,relx=0.5,rely=0.9)
+    stop = Button(camera,text="Stop",command = stop_,bg='#f50c46',activebackground='#f2417f')
+    stop.place(relheight=0.1,relwidth=0.5,relx=0.0,rely=0.9)
     screen = Label(camera)
     screen.place(relheight=0.90,relwidth=1)
     cap = cv2.VideoCapture(0) #Video capture object ( 0 - default camera , 1 - second camera , and so on)
@@ -65,26 +72,28 @@ root = Tk()
 #size of window
 root.geometry('600x600'); 
 root.title("Text Extractor");
+icon = PhotoImage(file='icon.png')
+root.iconphoto(True,icon)
 
 #Frames
-startframe = Frame(root)
-mainframe = Frame(root)
-saveas = Frame(root)
+startframe = Frame(root,bg='#34cceb')
+mainframe = Frame(root,bg='#348feb')
+
 startframe.place(relheight=1,relwidth=1)
 mainframe.place(relheight=1,relwidth=1)
-saveas.place(relheight=1,relwidth=1)
+
 
 startframe.tkraise()
 
 #Mainframe
-opencam = Button(mainframe,text='Open Cam',command=opencam)
-opencam.place(relheight=0.1,relwidth=0.3,relx=0.2,rely=0.2)
+opencam = Button(mainframe,text='Open Cam',command=opencam,bg='#37e6e6',activebackground='#3777e6',fg='black',activeforeground='#37e6e6')
+opencam.place(relheight=0.1,relwidth=0.3,relx=0.15,rely=0.3)
 
-selectimg = Button(mainframe,text='Select Image',command = open_img);
-selectimg.place(relheight=0.1,relwidth=0.3,relx=0.5,rely=0.2)
+selectimg = Button(mainframe,text='Select Image',command = open_img,bg='#37e6e6',activebackground='#3777e6',fg='black',activeforeground='#37e6e6');
+selectimg.place(relheight=0.1,relwidth=0.3,relx=0.53,rely=0.3)
 
 #start Frame
-Start = Button(startframe,text='start',command= mainframe.tkraise)
-Start.place(relheight=0.15,relwidth=0.3,relx=0.4,rely=0.4)
+Start = Button(startframe,text='Start',command= mainframe.tkraise,bg='#3777e6',fg='#000000',font=('Arial',25,'bold'))
+Start.place(relheight=0.15,relwidth=0.3,relx=0.35,rely=0.4)
 
 root.mainloop()
