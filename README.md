@@ -1,4 +1,4 @@
-# SVPCET-Technex-Hackathon-2021-Akatsuki
+# Text Extractor
 
 This is our hackathon project for Technex Hackathon 2021.
 
