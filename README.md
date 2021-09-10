@@ -1,6 +1,6 @@
 # Text Extractor
 
-This is our hackathon project for Technex Hackathon 2021.
+<!-- This is our hackathon project for Technex Hackathon 2021. -->
 
 **Here is the link for the demonstration video :** [Link](http://youtu.be/IJYRWPGB6yA) <br/>
 
